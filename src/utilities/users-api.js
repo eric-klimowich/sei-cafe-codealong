@@ -1,4 +1,8 @@
 import { getToken } from './users-service';
+<<<<<<< HEAD
+=======
+import sendRequest from './send-request';
+>>>>>>> c5a2aa2 (Starter code for shopping cart)
 
 const BASE_URL = '/api/users';
 
@@ -13,6 +17,7 @@ export function login(credentials) {
 export function checkToken() {
   return sendRequest(`${BASE_URL}/check-token`);
 }
+<<<<<<< HEAD
 
 /*--- Helper Functions ---*/
 
@@ -34,3 +39,5 @@ async function sendRequest(url, method = 'GET', payload = null) {
   if (res.ok) return res.json();
   throw new Error('Bad Request');
 }
+=======
+>>>>>>> c5a2aa2 (Starter code for shopping cart)
