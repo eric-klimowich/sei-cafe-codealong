@@ -1,43 +1,29 @@
-<<<<<<< HEAD
-export default function NewOrderPage() {
-  return (
-    <h1>NewOrderPage</h1>
-=======
-import { useState, useEffect, useRef } from 'react';
-import * as itemsAPI from '../../utilities/items-api';
-import './NewOrderPage.css';
-import { Link } from 'react-router-dom';
-import Logo from '../../components/Logo/Logo';
+import { useState, useEffect, useRef } from 'react'
+import * as itemsAPI from '../../utilities/items-api'
+import './NewOrderPage.css'
+import { Link } from 'react-router-dom'
+import Logo from '../../components/Logo/Logo'
 import MenuList from '../../components/MenuList/MenuList';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
 export default function NewOrderPage({ user, setUser }) {
-  const [menuItems, setMenuItems] = useState([]);
-  const [activeCat, setActiveCat] = useState('');
-  // Obtain a ref object
-  const categoriesRef = useRef([]);
+  const [menuItems, setMenuItems] = useState([])
+  const [activeCat, setActiveCat] = useState('')
+  const categoriesRef = useRef([])
 
-  // useEffect(function() {
-  //   console.log('NewOrderPage rendered');
-  // });
-  
-  useEffect(function() {
+  useEffect(() => {
     async function getItems() {
-      const items = await itemsAPI.getAll();
+      const items = await itemsAPI.getAll()
       categoriesRef.current = items.reduce((cats, item) => {
-        const cat = item.category.name;
+        const cat = item.category.name
         return cats.includes(cat) ? cats : [...cats, cat]
-      }, []);
-      setActiveCat(categoriesRef.current[1]);
-      setMenuItems(items);
+      }, [])
+      setMenuItems(items)
     }
-    getItems();
-  }, []);
-  // the empty dependency array above will result in 
-  // the function running after the FIRST render
-  // only
+    getItems()
+  }, [])
 
   return (
     <main className="NewOrderPage">
@@ -56,6 +42,5 @@ export default function NewOrderPage({ user, setUser }) {
       />
       <OrderDetail />
     </main>
->>>>>>> c5a2aa2 (Starter code for shopping cart)
   );
 }
